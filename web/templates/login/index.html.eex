@@ -1,0 +1,48 @@
+<div class="well">
+<%= form_tag(login_path(@conn, :login), class: "form-inline", id: "loginForm") %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2 form-group text-right">
+    <label for="username">Username:
+      <input name="username" type="text" class="form-control" placeholder="Username" />
+    </label>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2 form-group text-right">
+    <label for="password">Password:
+      <input name="password" type="password" class="form-control" placeholder="Password" />
+    </label>
+  </div>
+</div>
+<div id="emailDiv" class="row">
+  <div class="col-md-6 col-md-offset-2 form-group text-right">
+    <label for="email">Email:
+      <input name="email" type="email" class="form-control" placeholder="Email" />
+    </label>
+  </div>
+</div>
+<div class="text-center">
+  <button id="signUpBtn" class="btn btn-primary">Sign up</button>
+  <input type="submit" class="btn btn-default text-center" value="Sign in" />
+</div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+$(document).ready(function() {
+  var emailDiv = $("#emailDiv");
+  emailDiv.hide();
+
+  $("#signUpBtn").bind("click", function(e) {
+    e.preventDefault();
+    emailDiv.show();
+    $(this).unbind("click");
+    $(this).bind("click", function(e2) {
+      e2.preventDefault();
+      $("#loginForm").attr("action", "<%= login_path(@conn, :signup) %>");
+      $("#loginForm").submit();
+    });
+  });
+});
+</script>
