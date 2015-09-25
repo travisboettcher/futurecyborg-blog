@@ -30,11 +30,14 @@ defmodule HelloPhoenix.Router do
       pipe_through :authenticated
 
       resources "users", UserController
+      resources "posts", PostController
     end
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", HelloPhoenix do
-  #   pipe_through :api
-  # end
+  scope "/api", HelloPhoenix do
+    pipe_through :api
+
+    resources "users", API.UserController, only: [:show, :index]
+  end
 end

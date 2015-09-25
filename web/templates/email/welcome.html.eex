@@ -1,0 +1,4 @@
+<div class="jumbotron">
+  <h2>Welcome to HelloPhoenix, <%= @username %></h2>
+  Click <a href="<%= HelloPhoenix.Router.Helpers.page_url(HelloPhoenix.Endpoint, :index) %>">here</a> to go the the website!
+</div>

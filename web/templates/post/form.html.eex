@@ -11,18 +11,23 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :username, "Username", class: "control-label" %>
-    <%= text_input f, :username, class: "form-control" %>
+    <%= label f, :title, "Title", class: "control-label" %>
+    <%= text_input f, :title, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= label f, :password, "Password", class: "control-label" %>
-    <%= text_input f, :password, class: "form-control" %>
+    <%= label f, :content, "Content", class: "control-label" %>
+    <%= text_input f, :content, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= label f, :email, "Email", class: "control-label" %>
-    <%= text_input f, :email, class: "form-control" %>
+    <%= label f, :likes, "Likes", class: "control-label" %>
+    <%= number_input f, :likes, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :views, "Views", class: "control-label" %>
+    <%= number_input f, :views, class: "form-control" %>
   </div>
 
   <div class="form-group">

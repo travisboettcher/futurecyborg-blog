@@ -19,7 +19,8 @@ defmodule HelloPhoenix.UserController do
     changeset = User.changeset(%User{}, user_params)
 
     case Repo.insert(changeset) do
-      {:ok, _user} ->
+      {:ok, user} ->
+        HelloPhoenix.Mailer.send_welcome_email(user)
         conn
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: user_path(conn, :index))

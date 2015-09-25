@@ -5,11 +5,13 @@ defmodule HelloPhoenix.User do
   schema "users" do
     field :username, :string
     field :password, :string
+    field :email, :string
 
+    has_many :videos, HelloPhoenix.Post
     timestamps
   end
 
-  @required_fields ~w(username password)
+  @required_fields ~w(username password email)
   @optional_fields ~w()
 
   @doc """

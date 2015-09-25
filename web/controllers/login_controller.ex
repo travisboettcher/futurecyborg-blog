@@ -31,7 +31,8 @@ defmodule HelloPhoenix.LoginController do
     changeset = User.changeset(%User{}, scrubbed_params)
 
     case Repo.insert(changeset) do
-      {:ok, _user} ->
+      {:ok, user} ->
+        HelloPhoenix.Mailer.send_welcome_email(user)
         login(conn, scrubbed_params)
       {:error, _changeset} ->
         conn
