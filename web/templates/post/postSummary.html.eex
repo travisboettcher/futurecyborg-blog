@@ -1,0 +1,8 @@
+<li class="list-group-item">
+  <h3><%= @post.title %></h3>
+  <div id="content-<%=@post.id%>" class="postContent"><%= @post.content %></div>
+  <div class="contentLink" hidden>
+    ... <a href="<%= post_path HelloPhoenix.Endpoint, :show, @post.id %>">more...</a>
+  </div>
+  <div id="meta-<%=@post.id%>"><%= @post.updated_at %></div>
+</li>

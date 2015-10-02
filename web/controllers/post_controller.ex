@@ -1,12 +1,19 @@
 defmodule HelloPhoenix.PostController do
   use HelloPhoenix.Web, :controller
+  import Plug.Conn
 
   alias HelloPhoenix.Post
+  alias HelloPhoenix.Authorizer
 
   plug :scrub_params, "post" when action in [:create, :update]
+  plug :find_post, %{id: "id"} when action in [:show, :edit, :update, :delete]
+  plug :authorize_post when action in [:edit, :update, :delete]
 
   def index(conn, _params) do
-    posts = Repo.all(Post)
+    user = conn |> fetch_session |> get_session(:user)
+    posts = Repo.all from p in Post,
+      where: p.user_id == ^user.id,
+      select: p
     render(conn, "index.html", posts: posts)
   end
 
@@ -16,6 +23,12 @@ defmodule HelloPhoenix.PostController do
   end
 
   def create(conn, %{"post" => post_params}) do
+    user = conn |> fetch_session |> get_session(:user)
+    post_params = post_params
+      |> Dict.put_new("user_id", user.id)
+      |> Dict.put_new("likes", 0)
+      |> Dict.put_new("views", 0)
+    
     changeset = Post.changeset(%Post{}, post_params)
 
     case Repo.insert(changeset) do
@@ -63,5 +76,23 @@ defmodule HelloPhoenix.PostController do
     conn
     |> put_flash(:info, "Post deleted successfully.")
     |> redirect(to: post_path(conn, :index))
+  end
+  
+  defp find_post(%Plug.Conn{params: %{"id" => id}} = conn, _) do
+    case Repo.get(Post, id) do
+      nil ->
+        conn |> put_flash(:info, "That post wasn't found") |> redirect(to: "/") |> halt
+      post ->
+        assign(conn, :post, post)
+    end
+  end
+
+  defp authorize_post(conn, _) do
+    user = conn |> fetch_session |> get_session(:user)
+    if Authorizer.can_access?(user, conn.assigns[:post]) do
+      conn
+    else
+      conn |> put_flash(:info, "You can't access that page") |> redirect(to: "/") |> halt
+    end
   end
 end

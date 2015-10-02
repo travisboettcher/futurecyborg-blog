@@ -1,0 +1,1 @@
+<link href="<%= static_path @conn, "/css/content-editor.css" %>" rel="stylesheet" />

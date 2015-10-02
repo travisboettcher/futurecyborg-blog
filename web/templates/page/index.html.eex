@@ -1,4 +1,7 @@
 <div class="jumbotron">
-  <h2>Welcome to Phoenix with Travis!</h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2>Welcome to FutureCyb.org!</h2>
 </div>
+
+<ul class="list-group">
+  <%= render_many @posts, HelloPhoenix.PostView, "postSummary.html" %>
+</ul>

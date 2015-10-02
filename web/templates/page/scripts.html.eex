@@ -1,0 +1,14 @@
+<script>
+$(document).ready(function() {
+  $("div.postContent").each(function(_index, el) {
+    // TODO: should move this to View
+    var words = $(el).text().split(" ");
+    var linkDiv = $(el).siblings(".contentLink")[0];
+    var link = $(linkDiv).html();
+    if (words.length > 28) {
+      var text = words.slice(0, 28).join(" ").concat(link);
+      $(el).html(text);
+    }
+  });
+});
+</script>

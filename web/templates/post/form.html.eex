@@ -17,17 +17,7 @@
 
   <div class="form-group">
     <%= label f, :content, "Content", class: "control-label" %>
-    <%= text_input f, :content, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :likes, "Likes", class: "control-label" %>
-    <%= number_input f, :likes, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :views, "Views", class: "control-label" %>
-    <%= number_input f, :views, class: "form-control" %>
+    <%= textarea f, :content, class: "form-control", rows: 10, id: "content-editor" %>
   </div>
 
   <div class="form-group">

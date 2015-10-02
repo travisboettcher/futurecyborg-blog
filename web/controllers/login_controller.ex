@@ -10,7 +10,7 @@ defmodule HelloPhoenix.LoginController do
   def login(conn, %{"username" => username, "password" => password}) do
     case check_password(conn, username, password) do
       {:ok, conn} ->
-        redirect(conn, to: user_path(conn, :index))
+        redirect(conn, to: post_path(conn, :index))
       {:error, msg} ->
         conn
         |> put_flash(:error, msg)

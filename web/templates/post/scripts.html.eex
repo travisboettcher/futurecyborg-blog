@@ -1,0 +1,7 @@
+<script>
+
+$(document).ready(function() {
+  var editor = $("#content-editor");
+});
+
+</script>

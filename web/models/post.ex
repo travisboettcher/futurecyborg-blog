@@ -11,8 +11,8 @@ defmodule HelloPhoenix.Post do
     timestamps
   end
 
-  @required_fields ~w(title content likes views user_id)
-  @optional_fields ~w()
+  @required_fields ~w(title content user_id)
+  @optional_fields ~w(likes views)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
