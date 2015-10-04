@@ -1,13 +1,17 @@
 defmodule HelloPhoenix.PostController do
   use HelloPhoenix.Web, :controller
   import Plug.Conn
+  import Phoenix.HTML, only: [safe_to_string: 1, html_escape: 1]
 
   alias HelloPhoenix.Post
   alias HelloPhoenix.Authorizer
+  alias Earmark
 
   plug :scrub_params, "post" when action in [:create, :update]
   plug :find_post, %{id: "id"} when action in [:show, :edit, :update, :delete]
   plug :authorize_post when action in [:edit, :update, :delete]
+  plug :escape_html, "post" when action in [:create, :update]
+  plug :parse_markdown when action in [:show]
 
   def index(conn, _params) do
     user = conn |> fetch_session |> get_session(:user)
@@ -41,19 +45,19 @@ defmodule HelloPhoenix.PostController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id)
+  def show(conn, _) do
+    post = conn.assigns[:post]
     render(conn, "show.html", post: post)
   end
 
-  def edit(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id)
+  def edit(conn, _) do
+    post = conn.assigns[:post]
     changeset = Post.changeset(post)
     render(conn, "edit.html", post: post, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "post" => post_params}) do
-    post = Repo.get!(Post, id)
+  def update(conn, %{"post" => post_params}) do
+    post = conn.assigns[:post]
     changeset = Post.changeset(post, post_params)
 
     case Repo.update(changeset) do
@@ -66,8 +70,8 @@ defmodule HelloPhoenix.PostController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    post = Repo.get!(Post, id)
+  def delete(conn, _) do
+    post = conn.assigns[:post]
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
@@ -94,5 +98,21 @@ defmodule HelloPhoenix.PostController do
     else
       conn |> put_flash(:info, "You can't access that page") |> redirect(to: "/") |> halt
     end
+  end
+
+  defp parse_markdown(conn, _) do
+    md_post = conn.assigns[:post]
+    html_post_content = Earmark.to_html(md_post.content)
+    html_post = %{md_post | content: html_post_content}
+    assign(conn, :post, html_post)
+  end
+
+  defp escape_html(%Plug.Conn{params: %{"post" => post_params}} = conn, _) do
+    safe_content = html_escape(post_params["content"])
+    content_string = safe_to_string(safe_content)
+    safe_post_params = %{post_params | "content" => content_string}
+    escaped_params = %{conn.params | "post" => safe_post_params}
+    escaped_conn = %{conn | params: escaped_params}
+    escaped_conn
   end
 end

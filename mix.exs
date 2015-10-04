@@ -36,6 +36,7 @@ defmodule HelloPhoenix.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 1.1"},
-     {:mailgun, "~> 0.1.2"}]
+     {:mailgun, "~> 0.1.2"},
+     {:earmark, "~> 0.1.17"}]
   end
 end
