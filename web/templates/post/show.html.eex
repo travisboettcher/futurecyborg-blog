@@ -1,17 +1,8 @@
-<h2>Show post</h2>
+<h2><%= @post.title %></h2>
+<hr>
+<%= raw @post.content %>
 
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
-    <%= raw @post.content %>
-  </li>
-
+<ul class="list-inline">
   <li>
     <strong>Likes:</strong>
     <%= @post.likes %>
@@ -24,9 +15,8 @@
 
   <li>
     <strong>User:</strong>
-    <%= @post.user_id %>
+    <%= @post.user.username %>
   </li>
-
 </ul>
 
 <%= link "Edit", to: post_path(@conn, :edit, @post) %>

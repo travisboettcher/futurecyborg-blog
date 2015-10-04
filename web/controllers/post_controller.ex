@@ -5,7 +5,7 @@ defmodule HelloPhoenix.PostController do
 
   alias HelloPhoenix.Post
   alias HelloPhoenix.Authorizer
-  alias Earmark
+  alias HelloPhoenix.MarkdownParser
 
   plug :scrub_params, "post" when action in [:create, :update]
   plug :find_post, %{id: "id"} when action in [:show, :edit, :update, :delete]
@@ -46,7 +46,7 @@ defmodule HelloPhoenix.PostController do
   end
 
   def show(conn, _) do
-    post = conn.assigns[:post]
+    post = conn.assigns[:post] |> Repo.preload [:user]
     render(conn, "show.html", post: post)
   end
 
@@ -102,8 +102,7 @@ defmodule HelloPhoenix.PostController do
 
   defp parse_markdown(conn, _) do
     md_post = conn.assigns[:post]
-    html_post_content = Earmark.to_html(md_post.content)
-    html_post = %{md_post | content: html_post_content}
+    html_post = MarkdownParser.parse_markdown(md_post)
     assign(conn, :post, html_post)
   end
 

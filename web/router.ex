@@ -25,12 +25,13 @@ defmodule HelloPhoenix.Router do
     post "login", LoginController, :login
     get "logout", LoginController, :logout
     post "signup", LoginController, :signup
+    resources "posts", PostController, only: [:show]
 
     scope "/" do
       pipe_through :authenticated
 
       resources "users", UserController
-      resources "posts", PostController
+      resources "posts", PostController, except: [:show]
     end
   end
 
