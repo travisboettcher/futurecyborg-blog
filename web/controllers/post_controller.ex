@@ -9,6 +9,7 @@ defmodule HelloPhoenix.PostController do
 
   plug :scrub_params, "post" when action in [:create, :update]
   plug :find_post, %{id: "id"} when action in [:show, :edit, :update, :delete]
+  plug :increment_views when action in [:show]
   plug :authorize_post when action in [:edit, :update, :delete]
   plug :escape_html, "post" when action in [:create, :update]
   plug :parse_markdown when action in [:show]
@@ -113,5 +114,12 @@ defmodule HelloPhoenix.PostController do
     escaped_params = %{conn.params | "post" => safe_post_params}
     escaped_conn = %{conn | params: escaped_params}
     escaped_conn
+  end
+
+  defp increment_views(conn, _) do
+    post = conn.assigns[:post]
+    updated_post = Post.changeset(post, %{views: post.views + 1})
+      |> Repo.update!
+    assign(conn, :post, updated_post)
   end
 end
