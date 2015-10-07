@@ -4,7 +4,9 @@
       <%= @post.title %>
     </a>
   </h3>
-  <div id="content-<%=@post.id%>" class="postContent"><%= raw @post.content %></div>
+  <div id="content-<%=@post.id%>" class="postContent">
+    <%= HelloPhoenix.MarkdownParser.parse_markdown @post.content %>
+  </div>
   <div class="contentLink" hidden>
     ...<a href="<%= post_path HelloPhoenix.Endpoint, :show, @post.id %>">more...</a>
   </div>

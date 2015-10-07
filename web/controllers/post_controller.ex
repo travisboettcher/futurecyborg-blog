@@ -5,14 +5,12 @@ defmodule HelloPhoenix.PostController do
 
   alias HelloPhoenix.Post
   alias HelloPhoenix.Authorizer
-  alias HelloPhoenix.MarkdownParser
 
   plug :scrub_params, "post" when action in [:create, :update]
   plug :find_post, %{id: "id"} when action in [:show, :edit, :update, :delete]
   plug :increment_views when action in [:show]
   plug :authorize_post when action in [:edit, :update, :delete]
   plug :escape_html, "post" when action in [:create, :update]
-  plug :parse_markdown when action in [:show]
 
   def index(conn, _params) do
     user = conn |> fetch_session |> get_session(:user)
@@ -99,12 +97,6 @@ defmodule HelloPhoenix.PostController do
     else
       conn |> put_flash(:info, "You can't access that page") |> redirect(to: "/") |> halt
     end
-  end
-
-  defp parse_markdown(conn, _) do
-    md_post = conn.assigns[:post]
-    html_post = MarkdownParser.parse_markdown(md_post)
-    assign(conn, :post, html_post)
   end
 
   defp escape_html(%Plug.Conn{params: %{"post" => post_params}} = conn, _) do

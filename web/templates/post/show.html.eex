@@ -1,6 +1,6 @@
 <h2><%= @post.title %></h2>
 <hr>
-<%= raw @post.content %>
+<%= HelloPhoenix.MarkdownParser.parse_markdown @post.content %>
 
 <ul class="list-inline">
   <li>
