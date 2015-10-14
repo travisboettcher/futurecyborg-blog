@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.Repo.Migrations.CreateUser do
+defmodule FutureCyborg.Repo.Migrations.CreateUser do
   use Ecto.Migration
 
   def change do

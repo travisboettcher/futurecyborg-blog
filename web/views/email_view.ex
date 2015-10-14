@@ -1,3 +1,3 @@
-defmodule HelloPhoenix.EmailView do
-  use HelloPhoenix.Web, :view
+defmodule FutureCyborg.EmailView do
+  use FutureCyborg.Web, :view
 end

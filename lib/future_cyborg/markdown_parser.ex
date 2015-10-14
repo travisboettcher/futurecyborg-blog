@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.MarkdownParser do
+defmodule FutureCyborg.MarkdownParser do
   def parse_markdown(content) do
     content |> Earmark.to_html |> Phoenix.HTML.raw
   end

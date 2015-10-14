@@ -1,6 +1,6 @@
-defmodule HelloPhoenix.Authenticator do
-  alias HelloPhoenix.User
-  alias HelloPhoenix.Repo
+defmodule FutureCyborg.Authenticator do
+  alias FutureCyborg.User
+  alias FutureCyborg.Repo
   import Comeonin.Bcrypt, only: [checkpw: 2]
   import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
   import Plug.Conn
@@ -13,7 +13,7 @@ defmodule HelloPhoenix.Authenticator do
       {:error, msg} -> 
         conn 
         |> put_flash(:error, msg)
-        |> redirect(to: HelloPhoenix.Router.Helpers.login_path(conn, :index))
+        |> redirect(to: FutureCyborg.Router.Helpers.login_path(conn, :index))
         |> halt
     end
   end

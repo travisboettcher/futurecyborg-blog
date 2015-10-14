@@ -1,5 +1,5 @@
-defmodule HelloPhoenix.User do
-  use HelloPhoenix.Web, :model
+defmodule FutureCyborg.User do
+  use FutureCyborg.Web, :model
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   schema "users" do
@@ -7,7 +7,7 @@ defmodule HelloPhoenix.User do
     field :password, :string
     field :email, :string
 
-    has_many :videos, HelloPhoenix.Post
+    has_many :videos, FutureCyborg.Post
     timestamps
   end
 

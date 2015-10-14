@@ -6,12 +6,12 @@
 use Mix.Config
 
 # Configures the endpoint
-config :hello_phoenix, HelloPhoenix.Endpoint,
+config :future_cyborg, FutureCyborg.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   secret_key_base: "88zg2Xn+dRUdHPqCfpljWgIJdb9HhuzC2e8H7LOFFyn8PRNkhaCNehOuotun7/DG",
   render_errors: [accepts: ~w(html json)],
-  pubsub: [name: HelloPhoenix.PubSub,
+  pubsub: [name: FutureCyborg.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
@@ -28,6 +28,6 @@ config :phoenix, :generators,
   migration: true,
   binary_id: false
 
-config :hello_phoenix,
+config :future_cyborg,
   mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
   mailgun_key: System.get_env("MAILGUN_API_KEY")

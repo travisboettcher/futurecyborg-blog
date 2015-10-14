@@ -1,3 +1,3 @@
-defmodule HelloPhoenix.LayoutView do
-  use HelloPhoenix.Web, :view
+defmodule FutureCyborg.LayoutView do
+  use FutureCyborg.Web, :view
 end

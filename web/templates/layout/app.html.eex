@@ -31,7 +31,7 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <%= if HelloPhoenix.Authenticator.logged_in?(@conn) do %>
+            <%= if FutureCyborg.Authenticator.logged_in?(@conn) do %>
               <li><a href="<%= post_path(@conn, :index) %>">Posts</a></li>
               <li><a href="<%= login_path(@conn, :logout) %>">Log out</a></li>
             <% else %>

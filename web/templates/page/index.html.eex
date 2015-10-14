@@ -3,5 +3,5 @@
 </div>
 
 <ul class="list-group">
-  <%= render_many @posts, HelloPhoenix.PostView, "postSummary.html" %>
+  <%= render_many @posts, FutureCyborg.PostView, "postSummary.html" %>
 </ul>

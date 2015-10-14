@@ -1,6 +1,6 @@
-defmodule HelloPhoenix.API.UserController do
-  use HelloPhoenix.Web, :controller
-  alias HelloPhoenix.User
+defmodule FutureCyborg.API.UserController do
+  use FutureCyborg.Web, :controller
+  alias FutureCyborg.User
 
   def index(conn, %{"username" => username}) do
     users = Repo.all(from u in User,

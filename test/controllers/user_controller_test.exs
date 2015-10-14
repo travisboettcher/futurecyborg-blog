@@ -1,7 +1,7 @@
-defmodule HelloPhoenix.UserControllerTest do
-  use HelloPhoenix.ConnCase
+defmodule FutureCyborg.UserControllerTest do
+  use FutureCyborg.ConnCase
 
-  alias HelloPhoenix.User
+  alias FutureCyborg.User
   @valid_attrs %{password: "some content", username: "some content"}
   @invalid_attrs %{}
 

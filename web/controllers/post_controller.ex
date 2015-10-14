@@ -1,10 +1,10 @@
-defmodule HelloPhoenix.PostController do
-  use HelloPhoenix.Web, :controller
+defmodule FutureCyborg.PostController do
+  use FutureCyborg.Web, :controller
   import Plug.Conn
   import Phoenix.HTML, only: [safe_to_string: 1, html_escape: 1]
 
-  alias HelloPhoenix.Post
-  alias HelloPhoenix.Authorizer
+  alias FutureCyborg.Post
+  alias FutureCyborg.Authorizer
 
   plug :scrub_params, "post" when action in [:create, :update]
   plug :find_post, %{id: "id"} when action in [:show, :edit, :update, :delete]

@@ -1,6 +1,6 @@
-defmodule HelloPhoenix.PageController do
-  use HelloPhoenix.Web, :controller
-  alias HelloPhoenix.Post
+defmodule FutureCyborg.PageController do
+  use FutureCyborg.Web, :controller
+  alias FutureCyborg.Post
 
   def index(conn, _params) do
     posts = Repo.all from p in Post, 

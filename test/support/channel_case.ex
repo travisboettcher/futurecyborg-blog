@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.ChannelCase do
+defmodule FutureCyborg.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -20,19 +20,19 @@ defmodule HelloPhoenix.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias HelloPhoenix.Repo
+      alias FutureCyborg.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
 
       # The default endpoint for testing
-      @endpoint HelloPhoenix.Endpoint
+      @endpoint FutureCyborg.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(HelloPhoenix.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(FutureCyborg.Repo, [])
     end
 
     :ok

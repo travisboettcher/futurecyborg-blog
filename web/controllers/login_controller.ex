@@ -1,7 +1,7 @@
-defmodule HelloPhoenix.LoginController do
-  use HelloPhoenix.Web, :controller
-  alias HelloPhoenix.User
-  import HelloPhoenix.Authenticator, only: [check_password: 3]
+defmodule FutureCyborg.LoginController do
+  use FutureCyborg.Web, :controller
+  alias FutureCyborg.User
+  import FutureCyborg.Authenticator, only: [check_password: 3]
 
   def index(conn, _params) do
     render conn, "index.html"
@@ -32,7 +32,7 @@ defmodule HelloPhoenix.LoginController do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
-        HelloPhoenix.Mailer.send_welcome_email(user)
+        FutureCyborg.Mailer.send_welcome_email(user)
         login(conn, scrubbed_params)
       {:error, _changeset} ->
         conn

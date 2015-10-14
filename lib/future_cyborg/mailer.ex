@@ -1,7 +1,7 @@
-defmodule HelloPhoenix.Mailer do
+defmodule FutureCyborg.Mailer do
   use Mailgun.Client,
-    domain: Application.get_env(:hello_phoenix, :mailgun_domain),
-    key: Application.get_env(:hello_phoenix, :mailgun_key)
+    domain: Application.get_env(:future_cyborg, :mailgun_domain),
+    key: Application.get_env(:future_cyborg, :mailgun_key)
 
   @from "admin@futurecyb.org"
 
@@ -15,12 +15,12 @@ defmodule HelloPhoenix.Mailer do
 
   defp welcome_text(user) do
     """
-    Welcome to HelloPhoenix, #{user.username}!"
+    Welcome to FutureCyborg, #{user.username}!"
     """
   end
 
   defp welcome_html(user) do
     Phoenix.View.render_to_string(
-      HelloPhoenix.EmailView, "welcome.html", %{username: user.username})
+      FutureCyborg.EmailView, "welcome.html", %{username: user.username})
   end
 end

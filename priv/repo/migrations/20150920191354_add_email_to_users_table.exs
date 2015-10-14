@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.Repo.Migrations.AddEmailToUsersTable do
+defmodule FutureCyborg.Repo.Migrations.AddEmailToUsersTable do
   use Ecto.Migration
 
   def change do

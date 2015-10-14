@@ -1,7 +1,7 @@
-defmodule HelloPhoenix.PostTest do
-  use HelloPhoenix.ModelCase
+defmodule FutureCyborg.PostTest do
+  use FutureCyborg.ModelCase
 
-  alias HelloPhoenix.Post
+  alias FutureCyborg.Post
 
   @valid_attrs %{content: "some content", likes: 42, title: "some content", views: 42}
   @invalid_attrs %{}

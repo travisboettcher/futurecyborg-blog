@@ -1,7 +1,7 @@
-defmodule HelloPhoenix.PostControllerTest do
-  use HelloPhoenix.ConnCase
+defmodule FutureCyborg.PostControllerTest do
+  use FutureCyborg.ConnCase
 
-  alias HelloPhoenix.Post
+  alias FutureCyborg.Post
   @valid_attrs %{content: "some content", likes: 42, title: "some content", views: 42}
   @invalid_attrs %{}
 

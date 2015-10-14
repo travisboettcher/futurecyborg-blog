@@ -1,3 +1,3 @@
-defmodule HelloPhoenix.LoginView do
-  use HelloPhoenix.Web, :view
+defmodule FutureCyborg.LoginView do
+  use FutureCyborg.Web, :view
 end

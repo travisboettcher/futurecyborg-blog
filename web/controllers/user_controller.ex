@@ -1,7 +1,7 @@
-defmodule HelloPhoenix.UserController do
-  use HelloPhoenix.Web, :controller
+defmodule FutureCyborg.UserController do
+  use FutureCyborg.Web, :controller
 
-  alias HelloPhoenix.User
+  alias FutureCyborg.User
 
   plug :scrub_params, "user" when action in [:create, :update]
 
@@ -20,7 +20,7 @@ defmodule HelloPhoenix.UserController do
 
     case Repo.insert(changeset) do
       {:ok, user} ->
-        HelloPhoenix.Mailer.send_welcome_email(user)
+        FutureCyborg.Mailer.send_welcome_email(user)
         conn
         |> put_flash(:info, "User created successfully.")
         |> redirect(to: user_path(conn, :index))

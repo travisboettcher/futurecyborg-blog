@@ -1,5 +1,5 @@
-defmodule HelloPhoenix.ErrorView do
-  use HelloPhoenix.Web, :view
+defmodule FutureCyborg.ErrorView do
+  use FutureCyborg.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

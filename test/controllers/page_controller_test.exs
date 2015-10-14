@@ -1,5 +1,5 @@
-defmodule HelloPhoenix.PageControllerTest do
-  use HelloPhoenix.ConnCase
+defmodule FutureCyborg.PageControllerTest do
+  use FutureCyborg.ConnCase
 
   test "GET /" do
     conn = get conn(), "/"

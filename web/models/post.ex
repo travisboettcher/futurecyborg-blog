@@ -1,12 +1,12 @@
-defmodule HelloPhoenix.Post do
-  use HelloPhoenix.Web, :model
+defmodule FutureCyborg.Post do
+  use FutureCyborg.Web, :model
 
   schema "posts" do
     field :title, :string
     field :content, :string
     field :likes, :integer
     field :views, :integer
-    belongs_to :user, HelloPhoenix.User
+    belongs_to :user, FutureCyborg.User
 
     timestamps
   end

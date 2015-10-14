@@ -1,4 +1,4 @@
-defmodule HelloPhoenix.Repo.Migrations.AlterEmailToString do
+defmodule FutureCyborg.Repo.Migrations.AlterEmailToString do
   use Ecto.Migration
 
   def up do

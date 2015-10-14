@@ -1,5 +1,5 @@
-defmodule HelloPhoenix.Router do
-  use HelloPhoenix.Web, :router
+defmodule FutureCyborg.Router do
+  use FutureCyborg.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -10,14 +10,14 @@ defmodule HelloPhoenix.Router do
   end
 
   pipeline :authenticated do
-    plug HelloPhoenix.Authenticator
+    plug FutureCyborg.Authenticator
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", HelloPhoenix do
+  scope "/", FutureCyborg do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
@@ -36,7 +36,7 @@ defmodule HelloPhoenix.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", HelloPhoenix do
+  scope "/api", FutureCyborg do
     pipe_through :api
 
     resources "users", API.UserController, only: [:show, :index]

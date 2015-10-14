@@ -1,3 +1,3 @@
-defmodule HelloPhoenix.PageViewTest do
-  use HelloPhoenix.ConnCase, async: true
+defmodule FutureCyborg.PageViewTest do
+  use FutureCyborg.ConnCase, async: true
 end
