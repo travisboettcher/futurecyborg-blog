@@ -10,5 +10,8 @@
   <div class="contentLink" hidden>
     ...<a href="<%= post_path FutureCyborg.Endpoint, :show, @post.id %>">more...</a>
   </div>
-  <div id="meta-<%=@post.id%>"><%= @post.updated_at %></div>
+  <div class="row">
+    <div id="meta-<%=@post.id%>" class="col-sm-6"><%= @post.updated_at %></div>
+    <div class="col-sm-6 text-right">Likes: <%= @post.likes %></div>
+  </div>
 </li>
