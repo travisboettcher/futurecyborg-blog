@@ -28,6 +28,7 @@ defmodule FutureCyborg.Router do
     resources "posts", PostController, only: [:show]
     resources "shopping_lists", ShoppingListController
     resources "list_items", ListItemController
+    get "chat", ChatController, :index
 
     scope "/" do
       pipe_through :authenticated

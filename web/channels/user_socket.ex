@@ -2,7 +2,7 @@ defmodule FutureCyborg.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "rooms:*", FutureCyborg.RoomChannel
+  channel "rooms:*", FutureCyborg.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
