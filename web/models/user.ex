@@ -8,6 +8,7 @@ defmodule FutureCyborg.User do
     field :email, :string
 
     has_many :videos, FutureCyborg.Post
+    has_many :shopping_lists, FutureCyborg.ShoppingList
     timestamps
   end
 
