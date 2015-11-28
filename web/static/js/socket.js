@@ -68,7 +68,7 @@ chatInput.on("keypress", event => {
 var moment = require('moment');
 channel.on("new_msg", payload => {
 	var date = moment().format('h:mm:ss a');
-	messagesContainer.append(`<br/>[${date}] ${payload.body}`)
+	messagesContainer.append(`<br/>[${date}] <b>${user}:</b> ${payload.body}`)
 })
 
 channel.join()

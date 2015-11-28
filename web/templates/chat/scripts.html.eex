@@ -1,0 +1,8 @@
+<script>
+<%
+current_user = assigns[:current_user]
+username = if is_nil(current_user), do: "", else: current_user.username
+%>
+  
+window.user = "<%= username %>";
+</script>
